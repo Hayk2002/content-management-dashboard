@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
 
-import { getUsers } from "../services/api.ts";
 import { IUser } from "../types/iUser.ts";
 import SearchBox from "./SearchBox.tsx";
 import { useSearch } from "../hooks/useSearch.tsx";
+import { useGetUsersQuery } from "../hooks/useGetUsersQuery.tsx";
 
 const UsersList = () => {
-    const { isPending, isError, data, error } = useQuery({ queryKey: ['users'], queryFn: getUsers })
+    const { isPending, isError, data, error } = useGetUsersQuery()
 
     const { setInputValue, inputValue, handleSearch } = useSearch(data)
 

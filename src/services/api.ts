@@ -17,6 +17,13 @@ export const createUser = async (fields: IFormFields) => {
     });
 }
 
+export const editUser = async (id: string, fields: IFormFields) => {
+    await fetch(`http://localhost:3000/users/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(fields),
+    });
+}
+
 export const deleteUser = async (id: string) => {
     await fetch(`http://localhost:3000/users/${id}`, {
         method: 'DELETE',

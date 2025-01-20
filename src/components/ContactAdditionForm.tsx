@@ -1,32 +1,29 @@
+import { useEffect } from "react";
 import { useForm } from "@tanstack/react-form";
-import * as yup from "yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { createUser } from "../services/api.ts";
+import {createUser, editUser} from "../services/api.ts";
 import ImageUploader from "./ImageUploader.tsx";
+import {IFormFields, IUser} from "../types/iUser.ts";
 
-// Define the validation schema using Yup
-const schema = yup.object({
-    image: yup
-        .string()
-        .url("Please enter a valid URL")
-        .required("Image URL is required"),
-    name: yup
-        .string()
-        .min(2, "Name must be at least 2 characters long")
-        .required("Name is required"),
-    socialMedia: yup.string().required("Social Media handle is required"),
-    description: yup
-        .string()
-        .min(10, "Description must be at least 10 characters long")
-        .required("Description is required"),
-});
+interface IContactAdditionFormProps {
+    isEdit?: boolean;
+    editData?: IFormFields;
+    contactUuid?: string;
+}
 
-const ContactAdditionForm = () => {
+const ContactAdditionForm = ({ isEdit, editData, contactUuid } : IContactAdditionFormProps) => {
     const queryClient = useQueryClient()
 
     const mutation = useMutation({
         mutationFn: (formData: never) => createUser(formData),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['users'] })
+        },
+    })
+
+    const editMutation = useMutation({
+        mutationFn: (userData: IUser) => editUser(contactUuid as string, userData),
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['users'] })
         },
@@ -40,11 +37,20 @@ const ContactAdditionForm = () => {
             description: "",
         },
         onSubmit: async ({ value }) => {
-            // Do something with form data
-            mutation.mutate(value)
-            console.log(value)
-        },
+            if (isEdit) {
+                editMutation.mutate(value)
+            } else {
+                mutation.mutate(value)
+                form.reset()
+            }
+        }
     })
+
+    useEffect(() => {
+        if (isEdit) {
+            form.reset(editData)
+        }
+    }, [form, isEdit, editData])
 
     return (
         <div className="w-6/12 mx-auto mt-20">
