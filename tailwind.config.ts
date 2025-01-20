@@ -8,6 +8,9 @@ export default {
     extend: {
       gridTemplateColumns: {
         'layout': '300px 1fr'
+      },
+      colors: {
+        'active-blue': '#3f51b5',
       }
     },
   },
