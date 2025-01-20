@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       gridTemplateColumns: {
-        'layout': '300px 1fr'
+        'layout': '300px 1fr',
+        'search-box': '1fr auto'
       },
       colors: {
         'active-blue': '#3f51b5',

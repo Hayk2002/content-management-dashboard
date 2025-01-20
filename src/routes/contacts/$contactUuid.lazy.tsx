@@ -7,7 +7,7 @@ export const Route = createLazyFileRoute('/contacts/$contactUuid')({
 function Contact() {
   return (
     <div className="p-2">
-      <h3>User Profile</h3>
+      <h3>Welcome Home!</h3>
     </div>
   )
 }
