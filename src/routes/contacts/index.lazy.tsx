@@ -5,5 +5,5 @@ export const Route = createLazyFileRoute('/contacts/')({
 })
 
 export default function Contacts() {
-  return <div className="p-2">Overall page</div>
+  return <div className="p-2">Select a user to see his/her details</div>
 }
