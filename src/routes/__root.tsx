@@ -10,7 +10,9 @@ export const Route = createRootRoute({
         <>
             <Layout>
                 <Sidebar/>
-                <Outlet/>
+                <main className='p-2'>
+                    <Outlet/>
+                </main>
             </Layout>
             <TanStackRouterDevtools/>
             <ReactQueryDevtools/>

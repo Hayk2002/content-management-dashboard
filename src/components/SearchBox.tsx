@@ -21,8 +21,7 @@ const SearchBox = ({ setInputValue } : ISearchBoxProps) => {
                     onChange={(e) => setInputValue(e.target.value)}
                 />
             </div>
-            <button
-                className="pl-4 pr-4 py-2 rounded-md bg-white text-blue-500 shadow-md hover:bg-blue-500 hover:text-white transition-all duration-200">
+            <button className="pl-4 pr-4 py-2 rounded-md bg-white text-blue-500 shadow-md hover:bg-blue-500 hover:text-white transition-all duration-200">
                 New
             </button>
         </div>
