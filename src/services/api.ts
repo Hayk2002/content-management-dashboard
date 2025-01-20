@@ -11,10 +11,14 @@ export const getUserById = async (id: string) => {
 }
 
 export const createUser = async (fields: IFormFields) => {
-    const request = await fetch(`http://localhost:3000/users`, {
+     await fetch(`http://localhost:3000/users`, {
         method: 'POST',
         body: JSON.stringify(fields),
     });
+}
 
-    return await request.json();
+export const deleteUser = async (id: string) => {
+    await fetch(`http://localhost:3000/users/${id}`, {
+        method: 'DELETE',
+    });
 }

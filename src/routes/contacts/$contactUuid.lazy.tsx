@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import { createLazyFileRoute } from '@tanstack/react-router'
 
-import { getUserById } from "../../services/api.ts";
+import {createUser, deleteUser, getUserById} from "../../services/api.ts";
 
 export const Route = createLazyFileRoute('/contacts/$contactUuid')({
   component: Contact,
@@ -9,9 +9,18 @@ export const Route = createLazyFileRoute('/contacts/$contactUuid')({
 
 function Contact() {
     const { contactUuid } = Route.useParams()
+    const queryClient = useQueryClient()
+
     const { isPending, isError, data, error } = useQuery({
         queryKey: ['user', contactUuid],
         queryFn: async () => await getUserById(contactUuid)
+    })
+
+    const mutation = useMutation({
+        mutationFn: (contactUuid: never) => deleteUser(contactUuid),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['users'] })
+        },
     })
 
     if (isPending) return 'Fetching user...'
@@ -53,7 +62,10 @@ function Contact() {
                         className="pl-4 pr-4 py-2 rounded-md border-2 border-gray-100 bg-white text-blue-500 shadow-md hover:bg-blue-500 hover:text-white transition-all duration-200">
                         Edit
                     </button>
-                    <button className="pl-4 pr-4 py-2 rounded-md border-2 border-gray-100 bg-white text-red-500 shadow-md hover:bg-red-500 hover:text-white transition-all duration-200">
+                    <button
+                        onClick={() => mutation.mutate(contactUuid)}
+                        className="pl-4 pr-4 py-2 rounded-md border-2 border-gray-100 bg-white text-red-500 shadow-md hover:bg-red-500 hover:text-white transition-all duration-200"
+                    >
                         Delete
                     </button>
                 </div>
