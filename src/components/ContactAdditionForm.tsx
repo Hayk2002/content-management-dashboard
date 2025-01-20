@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {createUser, editUser} from "../services/api.ts";
 import ImageUploader from "./ImageUploader.tsx";
 import {IFormFields, IUser} from "../types/iUser.ts";
+import {containsUrl} from "../utils/helpers.ts";
 
 interface IContactAdditionFormProps {
     isEdit?: boolean;
@@ -69,41 +70,71 @@ const ContactAdditionForm = ({ isEdit, editData, contactUuid } : IContactAdditio
                 />
                 <form.Field
                     name="name"
+                    validators={{
+                        onChangeAsyncDebounceMs: 500,
+                        onChangeAsync: ({value}) =>
+                            value.length < 3 ? 'Name should contain at least 3 characters.' : undefined,
+                    }}
                     children={(field) => (
-                        <input
-                            placeholder='Full Name'
-                            className='w-full pl-2 pr-4 py-2 rounded-lg border-2 text-gray-700 shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent hover:shadow-lg'
-                            name={field.name}
-                            value={field.state.value}
-                            onBlur={field.handleBlur}
-                            onChange={(e) => field.handleChange(e.target.value)}
-                        />
+                        <>
+                            <input
+                                placeholder='Full Name'
+                                className='w-full pl-2 pr-4 py-2 rounded-lg border-2 text-gray-700 shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent hover:shadow-lg'
+                                name={field.name}
+                                value={field.state.value}
+                                onBlur={field.handleBlur}
+                                onChange={(e) => field.handleChange(e.target.value)}
+                            />
+                            {field.state.meta.errors ? (
+                                <span role="alert" className='text-red-500'>{field.state.meta.errors.join(', ')}</span>
+                            ) : null}
+                        </>
                     )}
                 />
                 <form.Field
                     name="socialMedia"
+                    validators={{
+                        onChangeAsyncDebounceMs: 500,
+                        onChangeAsync: ({value}) =>
+                            !containsUrl(value) ? 'Please insert valid social media url' : undefined,
+                    }}
                     children={(field) => (
-                        <input
-                            placeholder='Social Media'
-                            className='w-full pl-2 pr-4 py-2 rounded-lg border-2 text-gray-700 shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent hover:shadow-lg'
-                            name={field.name}
-                            value={field.state.value}
-                            onBlur={field.handleBlur}
-                            onChange={(e) => field.handleChange(e.target.value)}
-                        />
+                        <>
+                            <input
+                                placeholder='Social Media'
+                                className='w-full pl-2 pr-4 py-2 rounded-lg border-2 text-gray-700 shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent hover:shadow-lg'
+                                name={field.name}
+                                value={field.state.value}
+                                onBlur={field.handleBlur}
+                                onChange={(e) => field.handleChange(e.target.value)}
+                            />
+                            {field.state.meta.errors ? (
+                                <span role="alert" className='text-red-500'>{field.state.meta.errors.join(', ')}</span>
+                            ) : null}
+                        </>
                     )}
                 />
                 <form.Field
                     name="description"
+                    validators={{
+                        onChangeAsyncDebounceMs: 500,
+                        onChangeAsync: ({value}) =>
+                            value.length === 0 ? 'Please provide a description' : undefined,
+                    }}
                     children={(field) => (
-                        <textarea
-                            placeholder='Description/Occupation'
-                            className='w-full pl-2 pr-4 py-2 rounded-lg border-2 text-gray-700 shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent hover:shadow-lg'
-                            name={field.name}
-                            value={field.state.value}
-                            onBlur={field.handleBlur}
-                            onChange={(e) => field.handleChange(e.target.value)}
-                        />
+                        <>
+                            <textarea
+                                placeholder='Description/Occupation'
+                                className='w-full pl-2 pr-4 py-2 rounded-lg border-2 text-gray-700 shadow-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent hover:shadow-lg'
+                                name={field.name}
+                                value={field.state.value}
+                                onBlur={field.handleBlur}
+                                onChange={(e) => field.handleChange(e.target.value)}
+                            />
+                            {field.state.meta.errors ? (
+                                <span role="alert" className='text-red-500'>{field.state.meta.errors.join(', ')}</span>
+                            ) : null}
+                        </>
                     )}
                 />
                 <button
