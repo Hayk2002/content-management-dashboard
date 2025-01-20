@@ -1,0 +1,214 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "description": "Passionate traveler and food blogger.",
+      "socialMedia": "https://twitter.com/alicejohnson",
+      "image": "https://randomuser.me/api/portraits/women/1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Michael Smith",
+      "description": "Software engineer and AI enthusiast.",
+      "socialMedia": "https://github.com/michaelsmith",
+      "image": "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Sophia Brown",
+      "description": "Creative designer with a love for minimalism.",
+      "socialMedia": "https://www.behance.net/sophiabrown",
+      "image": "https://randomuser.me/api/portraits/women/2.jpg"
+    },
+    {
+      "id": 4,
+      "name": "James Williams",
+      "description": "Entrepreneur and public speaker.",
+      "socialMedia": "https://linkedin.com/in/jameswilliams",
+      "image": "https://randomuser.me/api/portraits/men/2.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Emma Garcia",
+      "description": "Photographer capturing nature's beauty.",
+      "socialMedia": "https://instagram.com/emmagarcia",
+      "image": "https://randomuser.me/api/portraits/women/3.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Oliver Martinez",
+      "description": "Digital marketer and SEO expert.",
+      "socialMedia": "https://twitter.com/olivermartinez",
+      "image": "https://randomuser.me/api/portraits/men/3.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Ava Rodriguez",
+      "description": "Writer and poet inspired by everyday life.",
+      "socialMedia": "https://medium.com/@avarodriguez",
+      "image": "https://randomuser.me/api/portraits/women/4.jpg"
+    },
+    {
+      "id": 8,
+      "name": "William Davis",
+      "description": "Fitness coach and nutrition enthusiast.",
+      "socialMedia": "https://instagram.com/williamdavis",
+      "image": "https://randomuser.me/api/portraits/men/4.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Isabella Hernandez",
+      "description": "Fashion designer with a flair for innovation.",
+      "socialMedia": "https://www.pinterest.com/isabellahernandez",
+      "image": "https://randomuser.me/api/portraits/women/5.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Ethan Moore",
+      "description": "Tech reviewer and gadget lover.",
+      "socialMedia": "https://youtube.com/ethanmoore",
+      "image": "https://randomuser.me/api/portraits/men/5.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Mia Taylor",
+      "description": "Mental health advocate and blogger.",
+      "socialMedia": "https://twitter.com/miataylor",
+      "image": "https://randomuser.me/api/portraits/women/6.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Lucas White",
+      "description": "Adventure sports enthusiast.",
+      "socialMedia": "https://instagram.com/lucaswhite",
+      "image": "https://randomuser.me/api/portraits/men/6.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Charlotte Martinez",
+      "description": "Content creator and educator.",
+      "socialMedia": "https://linkedin.com/in/charlottemartinez",
+      "image": "https://randomuser.me/api/portraits/women/7.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Henry Thompson",
+      "description": "Environmental activist and researcher.",
+      "socialMedia": "https://twitter.com/henrythompson",
+      "image": "https://randomuser.me/api/portraits/men/7.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Amelia Wilson",
+      "description": "Baker sharing unique recipes.",
+      "socialMedia": "https://youtube.com/ameliawilson",
+      "image": "https://randomuser.me/api/portraits/women/8.jpg"
+    },
+    {
+      "id": 16,
+      "name": "Jack Lopez",
+      "description": "Music producer and DJ.",
+      "socialMedia": "https://soundcloud.com/jacklopez",
+      "image": "https://randomuser.me/api/portraits/men/8.jpg"
+    },
+    {
+      "id": 17,
+      "name": "Luna Anderson",
+      "description": "Yoga instructor spreading positivity.",
+      "socialMedia": "https://instagram.com/lunaanderson",
+      "image": "https://randomuser.me/api/portraits/women/9.jpg"
+    },
+    {
+      "id": 18,
+      "name": "Alexander Clark",
+      "description": "Historian with a passion for storytelling.",
+      "socialMedia": "https://twitter.com/alexanderclark",
+      "image": "https://randomuser.me/api/portraits/men/9.jpg"
+    },
+    {
+      "id": 19,
+      "name": "Emily Lewis",
+      "description": "Artist exploring abstract forms.",
+      "socialMedia": "https://www.behance.net/emilylewis",
+      "image": "https://randomuser.me/api/portraits/women/10.jpg"
+    },
+    {
+      "id": 20,
+      "name": "Benjamin Hall",
+      "description": "Financial consultant and blogger.",
+      "socialMedia": "https://linkedin.com/in/benjaminhall",
+      "image": "https://randomuser.me/api/portraits/men/10.jpg"
+    },
+    {
+      "id": 21,
+      "name": "Grace Young",
+      "description": "DIY craft enthusiast and vlogger.",
+      "socialMedia": "https://youtube.com/graceyoung",
+      "image": "https://randomuser.me/api/portraits/women/11.jpg"
+    },
+    {
+      "id": 22,
+      "name": "Daniel King",
+      "description": "Podcaster discussing technology trends.",
+      "socialMedia": "https://spotify.com/danielking",
+      "image": "https://randomuser.me/api/portraits/men/11.jpg"
+    },
+    {
+      "id": 23,
+      "name": "Chloe Scott",
+      "description": "Chef sharing innovative recipes.",
+      "socialMedia": "https://instagram.com/chloescott",
+      "image": "https://randomuser.me/api/portraits/women/12.jpg"
+    },
+    {
+      "id": 24,
+      "name": "Matthew Perez",
+      "description": "Film critic and screenwriter.",
+      "socialMedia": "https://twitter.com/matthewperez",
+      "image": "https://randomuser.me/api/portraits/men/12.jpg"
+    },
+    {
+      "id": 25,
+      "name": "Lily Turner",
+      "description": "Fitness influencer promoting healthy living.",
+      "socialMedia": "https://instagram.com/lilyturner",
+      "image": "https://randomuser.me/api/portraits/women/13.jpg"
+    },
+    {
+      "id": 26,
+      "name": "David Brooks",
+      "description": "Professional photographer.",
+      "socialMedia": "https://500px.com/davidbrooks",
+      "image": "https://randomuser.me/api/portraits/men/13.jpg"
+    },
+    {
+      "id": 27,
+      "name": "Zoe Sanders",
+      "description": "Interior designer with a passion for details.",
+      "socialMedia": "https://pinterest.com/zoesanders",
+      "image": "https://randomuser.me/api/portraits/women/14.jpg"
+    },
+    {
+      "id": 28,
+      "name": "Ryan Morgan",
+      "description": "Entrepreneur building tech startups.",
+      "socialMedia": "https://linkedin.com/in/ryanmorgan",
+      "image": "https://randomuser.me/api/portraits/men/14.jpg"
+    },
+    {
+      "id": 29,
+      "name": "Natalie Reed",
+      "description": "Writer exploring fantasy and science fiction.",
+      "socialMedia": "https://medium.com/@nataliered",
+      "image": "https://randomuser.me/api/portraits/women/15.jpg"
+    },
+    {
+      "id": 30,
+      "name": "Chris Bell",
+      "description": "Architect designing sustainable buildings.",
+      "socialMedia": "https://linkedin.com/in/chrisbell",
+      "image": "https://randomuser.me/api/portraits/men/15.jpg"
+    }
+  ]
+}
