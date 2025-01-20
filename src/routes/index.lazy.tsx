@@ -1,13 +1,6 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
+import { createLazyFileRoute } from '@tanstack/react-router'
+import Contacts from "./contacts/index.lazy.tsx";
 
 export const Route = createLazyFileRoute('/')({
-    component: Index,
+  component: Contacts,
 })
-
-function Index() {
-    return (
-        <div className="p-2">
-            <h3>Welcome Home!</h3>
-        </div>
-    )
-}

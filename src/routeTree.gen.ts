@@ -16,22 +16,35 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
-const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
+const ContactsIndexLazyImport = createFileRoute('/contacts/')()
+const ContactsContactUuidLazyImport = createFileRoute(
+  '/contacts/$contactUuid',
+)()
 
 // Create/Update Routes
-
-const AboutLazyRoute = AboutLazyImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
 
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const ContactsIndexLazyRoute = ContactsIndexLazyImport.update({
+  id: '/contacts/',
+  path: '/contacts/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/contacts/index.lazy').then((d) => d.Route),
+)
+
+const ContactsContactUuidLazyRoute = ContactsContactUuidLazyImport.update({
+  id: '/contacts/$contactUuid',
+  path: '/contacts/$contactUuid',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/contacts/$contactUuid.lazy').then((d) => d.Route),
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -44,11 +57,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutLazyImport
+    '/contacts/$contactUuid': {
+      id: '/contacts/$contactUuid'
+      path: '/contacts/$contactUuid'
+      fullPath: '/contacts/$contactUuid'
+      preLoaderRoute: typeof ContactsContactUuidLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/contacts/': {
+      id: '/contacts/'
+      path: '/contacts'
+      fullPath: '/contacts'
+      preLoaderRoute: typeof ContactsIndexLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -58,37 +78,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
+  '/contacts/$contactUuid': typeof ContactsContactUuidLazyRoute
+  '/contacts': typeof ContactsIndexLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
+  '/contacts/$contactUuid': typeof ContactsContactUuidLazyRoute
+  '/contacts': typeof ContactsIndexLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
-  '/about': typeof AboutLazyRoute
+  '/contacts/$contactUuid': typeof ContactsContactUuidLazyRoute
+  '/contacts/': typeof ContactsIndexLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths: '/' | '/contacts/$contactUuid' | '/contacts'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/contacts/$contactUuid' | '/contacts'
+  id: '__root__' | '/' | '/contacts/$contactUuid' | '/contacts/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
-  AboutLazyRoute: typeof AboutLazyRoute
+  ContactsContactUuidLazyRoute: typeof ContactsContactUuidLazyRoute
+  ContactsIndexLazyRoute: typeof ContactsIndexLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  AboutLazyRoute: AboutLazyRoute,
+  ContactsContactUuidLazyRoute: ContactsContactUuidLazyRoute,
+  ContactsIndexLazyRoute: ContactsIndexLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -102,14 +127,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/about"
+        "/contacts/$contactUuid",
+        "/contacts/"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
-    "/about": {
-      "filePath": "about.lazy.tsx"
+    "/contacts/$contactUuid": {
+      "filePath": "contacts/$contactUuid.lazy.tsx"
+    },
+    "/contacts/": {
+      "filePath": "contacts/index.lazy.tsx"
     }
   }
 }
